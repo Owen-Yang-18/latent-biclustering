@@ -1,0 +1,18 @@
+{
+  "seed": 7,
+  "n_obj": 120,
+  "n_attr": 100,
+  "go": 6,
+  "ga": 6,
+  "nrel": 8,
+  "target_sparsity": 0.94,
+  "background_rate": 0.001,
+  "feature_dim": 32,
+  "d_obj": 32,
+  "d_attr": 32,
+  "kmax": 8,
+  "ppr_top_t": 8,
+  "negatives_per_positive": 4,
+  "steps": 18
+}
+

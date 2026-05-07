@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Runtime outputs
+outputs/
+checkpoints/
+runs/
+logs/
+
+# Slurm logs
+slurm-*.out
+slurm-*.err
+synthetic_pipeline-*.out
+synthetic_pipeline-*.err
+
+# Generated arrays and sparse matrices
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+
+# System/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
