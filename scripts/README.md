@@ -1,20 +1,8 @@
 # Scripts
 
-This directory contains command-line entry points for running the source
-release.
+Run Python scripts from `release/` unless noted.
 
 ## `run_synthetic_pipeline.py`
-
-Runs the full model pipeline on a generated sparse object-attribute matrix:
-
-1. generate `X`
-2. build the bipartite graph
-3. compute sparse random projection node features
-4. construct PPR-based training pairs
-5. train the GAT encoder and structured Bernoulli interaction core
-6. export embeddings and interaction-core artifacts
-
-Usage from `release/`:
 
 ```bash
 python scripts/run_synthetic_pipeline.py \
@@ -22,17 +10,45 @@ python scripts/run_synthetic_pipeline.py \
   --device cpu
 ```
 
+## `run_matrix_pipeline.py`
+
+```bash
+python scripts/run_matrix_pipeline.py \
+  --matrix data/processed/lastfm/X.npz \
+  --config configs/realworld_pipeline.json \
+  --output-dir outputs/lastfm
+```
+
+## `preprocess_realworld.py`
+
+Supported datasets: `retail`, `lastfm`, `movielens`, `amazon`.
+
+```bash
+python scripts/preprocess_realworld.py \
+  --dataset lastfm \
+  --input data/raw/hetrec2011-lastfm-2k/user_artists.dat \
+  --output-dir data/processed
+```
+
+Dataset download commands are in `docs/real_world_data.md`.
+
+## `extract_latent_biclusters.py`
+
+Requires `requirements-extraction.txt`.
+
+```bash
+python scripts/extract_latent_biclusters.py \
+  --run-dir outputs/synthetic_pipeline_<jobid> \
+  --matrix-key M_hat \
+  --method las \
+  --n-biclusters 10 \
+  --map-to-data
+```
+
 ## `synthetic_pipeline.sbatch`
 
-Slurm entry point for the same pipeline. Submit it from the repository root:
+Submit from the repository root:
 
 ```bash
 sbatch release/scripts/synthetic_pipeline.sbatch
 ```
-
-Edit the environment activation block in the script if dependencies are
-provided through conda or a virtual environment.
-
-Slurm stdout and stderr are written in the submission directory as
-`synthetic_pipeline-<jobid>.out` and `synthetic_pipeline-<jobid>.err`. Model
-artifacts are written under `release/outputs/`.

@@ -1,0 +1,5 @@
+# Optional dependencies for latent bicluster extraction on exported M_hat/M_prob.
+biclustlib==0.0.13
+scikit-learn>=1.3
+bottleneck>=1.3
+

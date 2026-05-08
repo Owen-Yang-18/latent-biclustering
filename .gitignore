@@ -22,6 +22,8 @@ dist/
 *.egg-info/
 
 # Runtime outputs
+data/raw/
+data/processed/
 outputs/
 checkpoints/
 runs/
@@ -47,4 +49,3 @@ Thumbs.db
 *.swo
 .vscode/
 .idea/
-
